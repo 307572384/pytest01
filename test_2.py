@@ -143,13 +143,16 @@ class Cms(unittest.TestCase):  # 定义一个测试框架的类
         reps = requests.post(url=url, headers=headers, data=data)
         print(reps.text)
 
-
 if __name__ == '__main__':
     suit = unittest.TestSuite()
+    print(Cms)
+    cms = Cms()
+    # cms.list_all_member()
     suit.addTests([Cms('test_1'), Cms('test_2'), Cms('test_3'),
                    Cms('test_4'), Cms('test_5'), Cms('test_6'),
                    Cms('test_7'), Cms('test_8'), Cms('test_9'),
                    Cms('test_10')])
+
     p = open(report_path, 'wb')
     run = HTMLTestRunner(stream=p, title='Cms登录接口报告', description='执行概况如下', tester='cxc')
     run.run(suit)
